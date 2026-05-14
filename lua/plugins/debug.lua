@@ -45,7 +45,7 @@ return {
                         type = "firefox",
                         request = "attach",
                         name = "Attach to Firefox (port 6000)",
-                        host = "172.17.224.1",
+                        host = "localhost",
                         port = 6000,
                         url = "http://localhost:9000",
                         webRoot = "${workspaceFolder}/src",
@@ -65,6 +65,17 @@ return {
                         processId = require("dap.utils").pick_process,
                         cwd = "${workspaceFolder}",
                     },
+                    {
+                        type = "pwa-chrome",
+                        request = "launch",
+                        name = "Launch chrome",
+                        url = "http://localhost:9000",
+                        webRoot = "${workspaceFolder}",
+                        sourceMaps = true,
+                        sourceMapPathOverrides = {
+                            ["webpack://react-ui/*"] = "${webRoot}/*"
+                        }
+                    }
                 }
             end
 
