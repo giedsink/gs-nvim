@@ -72,6 +72,10 @@ return {
             k("n", "<leader>o",  "<Cmd>Neotree reveal<CR>",     { desc = "Reveal file in tree" })
             k("n", "<leader>g",  "<Cmd>Neotree git_status<CR>", { desc = "Git changed files" })
             k("n", "<leader>nb", "<Cmd>Neotree buffers<CR>",    { desc = "Neotree buffers" })
+            vim.api.nvim_set_hl(0, "NeotreeNormal", { bg = "none"})
+            vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "none"})
+            vim.api.nvim_set_hl(0, "NeoTreeEndOfBuffer", { bg = "none"})
+            vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { bg = "none"})
         end,
     },
 
