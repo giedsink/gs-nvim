@@ -45,6 +45,17 @@ return {
             k("n", "<leader>sw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>',   { desc = "Search current word" })
             k("v", "<leader>sw", '<esc><cmd>lua require("spectre").open_visual()<CR>',                { desc = "Search current word" })
             k("n", "<leader>sp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', { desc = "Search on current file" })
+
+            -- Spectre forces wrap=false itself right after this event fires,
+            -- so defer to override it once that setup finishes.
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = "spectre_panel",
+                callback = function()
+                    vim.schedule(function()
+                        vim.opt_local.wrap = true
+                    end)
+                end,
+            })
         end,
     },
 

@@ -7,7 +7,22 @@ return {
             require("telescope").setup({
                 defaults = {
                     preview = { treesitter = false },
+                    wrap_results = true,
+                    layout_strategy = "horizontal",
+                    layout_config = {
+                        width = 0.97,
+                        height = 0.95,
+                        preview_width = 0.60,
+                    },
                 },
+            })
+
+            -- Telescope hardcodes wrap=false on the preview window; force it back on
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "TelescopePreviewerLoaded",
+                callback = function()
+                    vim.opt_local.wrap = true
+                end,
             })
 
             local builtin = require("telescope.builtin")
