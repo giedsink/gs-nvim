@@ -100,4 +100,11 @@ return {
             k({ "n", "x", "o" }, "S", function() require("flash").treesitter() end,      { desc = "Flash treesitter select" })
         end,
     },
+    {
+      'stevearc/quicker.nvim',
+      ft = "qf",
+      ---@module "quicker"
+      ---@type quicker.SetupOptions
+      opts = {},
+    }
 }

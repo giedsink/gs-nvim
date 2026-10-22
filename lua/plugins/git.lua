@@ -13,11 +13,11 @@ return {
             local gs = require("gitsigns")
             gs.setup({
                 signs = {
-                    add          = { text = "+" },
-                    change       = { text = "~" },
-                    delete       = { text = "-" },
-                    topdelete    = { text = "0" },
-                    changedelete = { text = "~" },
+                    add          = { text = "\u{eadc}" },
+                    change       = { text = "\u{eade}" },
+                    delete       = { text = "\u{eadf}" },
+                    topdelete    = { text = "\u{eadf}" },
+                    changedelete = { text = "\u{eae0}" },
                 },
                 current_line_blame = false,
                 on_attach = function(bufnr)

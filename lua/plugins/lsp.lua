@@ -24,7 +24,7 @@ return {
 
             vim.lsp.config("*", { capabilities = capabilities })
 
-            vim.lsp.enable({ "ts_ls", "lua_ls", "cssls" })
+            vim.lsp.enable({ "ts_ls", "lua_ls", "cssls", "jdtls" })
 
             -- Global diagnostic keymap — works regardless of LSP attach state
             vim.keymap.set("n", "<leader>lsd", function()
