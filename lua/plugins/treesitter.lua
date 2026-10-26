@@ -1,27 +1,19 @@
 return {
     {
+        -- "master" branch supports Neovim 0.11; "main" needs 0.12+.
         "nvim-treesitter/nvim-treesitter",
-        branch = "main",
+        branch = "master",
         build = ":TSUpdate",
         config = function()
-            local ensure_installed = {
-                "lua", "vim", "vimdoc", "query",
-                "javascript", "typescript", "tsx",
-                "json", "html", "css",
-            }
-            local installed = require("nvim-treesitter.config").get_installed()
-            local to_install = vim.tbl_filter(function(lang)
-                return not vim.tbl_contains(installed, lang)
-            end, ensure_installed)
-            if #to_install > 0 then
-                require("nvim-treesitter").install(to_install)
-            end
-
-            -- Enable treesitter highlighting for every buffer that has a parser
-            vim.api.nvim_create_autocmd("FileType", {
-                callback = function(args)
-                    pcall(vim.treesitter.start, args.buf)
-                end,
+            require("nvim-treesitter.configs").setup({
+                ensure_installed = {
+                    "lua", "vim", "vimdoc", "query",
+                    "javascript", "typescript", "tsx",
+                    "json", "html", "css",
+                },
+                auto_install = true,
+                highlight = { enable = true },
+                indent = { enable = true },
             })
         end,
     },

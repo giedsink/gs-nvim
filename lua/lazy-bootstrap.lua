@@ -32,4 +32,11 @@ require("lazy").setup({
   install = { colorscheme = { "habamax" } },
   -- automatically check for plugin updates
   -- checker = { enabled = true },
+  performance = {
+    rtp = {
+      -- Debian/Ubuntu ship Neovim's bundled treesitter parsers here;
+      -- lazy's rtp reset would otherwise drop it.
+      paths = { "/usr/lib/nvim" },
+    },
+  },
 })
